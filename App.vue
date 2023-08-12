@@ -137,8 +137,8 @@ export default {
             <span class=" text-neo-red">Design</span> is strategic.
           </h2>
           <p class=" mb-10 TB:mb-8 DT:mb-12 text-[.9375rem] DT:text-[1.125rem] leading-[1.5625rem] DT:leading-[2rem]">
-            A well-crafted design strategy consistently produces desired outcomes and brand awareness.
-            We are firm believers that success lies in creative collaboration with our clients.
+            "A well-crafted design strategy consistently produces desired outcomes and brand awareness.
+            We are firm believers that success lies in creative collaboration with our clients."
           </p>
           <button @mouseenter="isBtnStratHovered = true" @mouseleave="isBtnStratHovered = false"
             class=" flex flex-col gap-2 select-none">
@@ -162,7 +162,7 @@ export default {
               class=" absolute left-0 TB:-left-4 DT:-left-[3.75rem] top-0 TB:-top-11 text-neo-white text-opacity-25 text-[5rem] leading-[5.5rem] font-extrabold select-none">
               0{{ item.id }}
             </div>
-            <h4 class=" mb-4 DT:mb-6 DT:text-[1.25rem] font-extrabold">
+            <h4 class=" mb-4 DT:mb-6 DT:text-[1.25rem] font-extrabold capitalize">
               {{ item.header }}</h4>
             <p class=" DT:text-[1.125rem]">
               {{ item.main }}

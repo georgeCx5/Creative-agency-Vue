@@ -4,7 +4,7 @@ import logo from '@/assets/images/desktop/logo.svg?url'
 import iconHamburger from '@/assets/images/mobile/icon-hamburger.svg?url'
 import iconCross from '@/assets/images/mobile/icon-cross.svg?url'
 import pttWaveRed from '@/assets/images/desktop/bg-pattern-wave-red.svg?url'
-import pttWaveWhite from '@/assets/images/desktop/bg-pattern-wave-white.svg?url'
+import pttWaveWhite from '@/assets/images/desktop/bg-pattern-wavy-white.svg?url'
 
 import BtnArrow from './components/BtnArrow.vue'
 
@@ -47,6 +47,9 @@ export default {
       if (this.isBtnStratHovered) {
         text = 'text-neo-hover-red'
         line = 'bg-neo-hover-red'
+      } else {
+        text = 'text-neo-red'
+        line = 'bg-neo-red'
       }
       return { text, line }
     }
@@ -57,7 +60,7 @@ export default {
   <body class=" flex flex-col items-center font-commissioner text-neo-Text">
     <header class=" relative w-full max-w-[425px] TB:max-w-[1024px] pt-[6.875rem] TB:pt-0 pb-24 TB:pb-0 overflow-hidden">
       <nav
-        class=" fixed TB:relative top-0 flex justify-between items-center w-full max-w-[425px] TB:max-w-[1024px] px-6 py-10 TB:py-0 TB:pl-10 TB:pr-0 bg-neo-white select-none z-10">
+        class=" fixed TB:relative top-0 flex justify-between items-center w-full max-w-[425px] TB:max-w-[1024px]  px-6 py-10 TB:py-0 TB:pl-10 TB:pr-0 bg-neo-white select-none z-10">
         <img :src="logo" alt="logo" draggable="false">
         <!-- Nav Mobile -->
         <button @click=" isNavOpen = !isNavOpen"
@@ -118,8 +121,8 @@ export default {
     <main class=" w-full max-w-[425px] TB:max-w-[1024px] text-neo-white">
       <section class=" flex flex-col TB:flex-row items-start TB:h-[658px]">
         <div
-          :class="` relative w-full TB:w-[49.3%] h-[200px] TB:h-full ${store.joinArr(store.bgStrategic)} bg-cover TB:bg-center select-none`">
-          <img class=" absolute -bottom-3 TB:bottom-[30rem] left-6 TB:left-auto TB:-right-6 h-7" :src="pttWaveRed"
+          :class="` relative w-full TB:w-[49.3%] h-[200px] TB:h-full ${store.joinArr(store.bgStrategic)} bg-cover TB:bg-center bg-no-repeat select-none`">
+          <img class=" absolute -bottom-3 TB:bottom-[31rem] left-6 TB:left-auto TB:-right-6 h-7" :src="pttWaveRed"
             alt="pttWaveRed" draggable="false">
         </div>
         <div
@@ -133,9 +136,9 @@ export default {
           </p>
           <button @mouseenter="isBtnStratHovered = true" @mouseleave="isBtnStratHovered = false"
             class=" flex flex-col gap-2 select-none">
-            <h6 :class="` text-neo-red ${getHoverColor.text} text-[.9375rem] leading-[1.125rem] font-extrabold`">
+            <h6 :class="` ${getHoverColor.text} text-[.9375rem] leading-[1.125rem] font-extrabold`">
               Schedule a call</h6>
-            <div :class="` w-full h-px bg-neo-red ${getHoverColor.line}`"></div>
+            <div :class="` w-full h-px ${getHoverColor.line}`"></div>
           </button>
         </div>
       </section>
@@ -158,13 +161,15 @@ export default {
           </article>
         </div>
       </section>
-      <section>
-        <div class=" relative w-full h-[404px]">
+      <section class=" flex flex-col TB:flex-row-reverse">
+        <div class=" relative w-full TB:w-[57%] h-[404px] TB:h-[472px]">
           <div v-for="(item, index) in store.bgSlides">
             <Transition name="fade-slide">
               <div v-show="index == store.slideCount"
                 :class="` absolute w-full h-full ${store.joinArr(item.bgs)} bg-cover bg-center`">
-                <div class=" absolute bottom-0 w-full h-[111px] bg-gradient-to-b from-transparent to-neo-Text"></div>
+                <div
+                  class=" absolute bottom-0 w-full h-[111px] TB:h-[130px] bg-gradient-to-b from-transparent to-neo-Text">
+                </div>
                 <div
                   class=" relative flex flex-col justify-end items-end h-full p-8 text-right text-[.9375rem] leading-[1.25rem]">
                   <h5 class=" font-extrabold">
@@ -176,7 +181,10 @@ export default {
             </Transition>
           </div>
         </div>
-        <div class=" flex flex-col justify-center items-start gap-6 w-full h-[272px] px-6 bg-neo-BG">
+        <div
+          class=" TB:absolute TB:left-0 flex flex-col justify-center items-start gap-6 TB:gap-8 w-full TB:w-[50.75%] h-[272px] TB:h-[352px] px-6 TB:px-10 bg-neo-BG">
+          <img class=" absolute top-32 -right-8 hidden TB:block h-7 -scale-x-100 select-none" :src="pttWaveWhite"
+            alt="pttWaveWhite" draggable="false">
           <h2 class=" text-[2rem] leading-[2.5rem] font-extrabold">
             {{ store.bgSlides[store.slideCount].main }}</h2>
           <div class=" flex gap-4">
@@ -185,8 +193,9 @@ export default {
           </div>
         </div>
       </section>
-      <section class=" flex flex-col gap-12 px-6 py-[6.25rem]">
-        <h2 class=" text-neo-Text text-[2rem] leading-[2.5rem] font-extrabold">
+      <section
+        class=" flex flex-col TB:flex-row TB:justify-between items-start TB:items-center gap-12 px-6 TB:px-10 py-[6.25rem] TB:pt-[4.5rem]">
+        <h2 class=" TB:w-[58%] text-neo-Text text-[2rem] leading-[2.5rem] font-extrabold">
           Let's build something great together.</h2>
         <button
           class=" w-[199px] h-[64px] bg-neo-red hover:bg-opacity-60 text-neo-white text-[1rem] leading-[1.25rem] font-extrabold select-none">
